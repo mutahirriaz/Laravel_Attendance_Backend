@@ -26,8 +26,8 @@ class ChangeRequest extends Controller
          if ($validator->fails()) {
             return response()->json([
                 'status' => 'FAILURE',
-                'message' => $request->path(),
-                'requestKey' => $validator->messages()->first(),
+                'requestKey' => $request->path(),
+                'message' => $validator->messages()->first(),
                 
             ],422);
 
@@ -56,7 +56,8 @@ class ChangeRequest extends Controller
     // function is used to get all users of changeRequestUsers
     public function getChangeReqUser()
     {
-        $users = ChangeRequestt::all();
+        $users = ChangeRequestt::select('changerequest.id', 'changerequest.userId', 'changerequest.created_at', 'changerequest.updated_at', 'changerequest.deviceId', 'users.name', 'users.email', 'users.phone', 'users.image')->join('users', 'users.id', '=', 'changerequest.userId')->get();
+        // $users = ChangeRequestt::all();
         return response()->json([
             'status'=>200,
             'response'=>$users
