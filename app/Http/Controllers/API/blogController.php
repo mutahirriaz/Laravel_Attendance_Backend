@@ -90,7 +90,6 @@ class blogController extends Controller
     }
 
 
-
     public function getBlogByCategory(Request $request)
     {
     //    $blogByCategory =  blog::where('category', 'LIKE', "%{$request->category}%")
@@ -106,6 +105,28 @@ class blogController extends Controller
     else{
         $categorizedBlog = blog::where('isActive', 1)->Where('category', $request->category)
         ->get();
+        return response()->json([
+            'status'=>200,
+            'response'=>$categorizedBlog
+    ]);
+    }  
+    }
+
+
+    public function getBlogByCategoryForAdmin(Request $request)
+    {
+    //    $blogByCategory =  blog::where('category', 'LIKE', "%{$request->category}%")
+    //     ->get();
+    if($request->category === "All"){
+        $blogs =  blog::all();
+        return response()->json([
+            'status'=>200,
+            'response'=>$blogs
+        ]);
+    }
+
+    else{
+        $categorizedBlog = blog::where('category', $request->category)->get();
         return response()->json([
             'status'=>200,
             'response'=>$categorizedBlog

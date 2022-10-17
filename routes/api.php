@@ -45,6 +45,7 @@ Route::post('user/deletereview', [testimonialController::class, 'deleteReview'])
 Route::post('user/getallreviews', [testimonialController::class, 'getAllReviews']);
 Route::post('user/addblog', [blogController::class, 'addBlog']);
 Route::post('user/getblogbycategory', [blogController::class, 'getBlogByCategory']);
+Route::post('user/getblogbycategoryforadmin', [blogController::class, 'getBlogByCategoryForAdmin']);
 Route::post('user/updateblog', [blogController::class, 'updateBlog']);
 Route::post('user/updateblogstatus', [blogController::class, 'updateBlogStatus']);
 Route::post('user/deleteblog', [blogController::class, 'deleteBlog']);
@@ -56,6 +57,7 @@ Route::post('user/addproject', [projectsController::class, 'addProject']);
 Route::post('user/updateproject', [projectsController::class, 'updateProject']);
 Route::post('user/deleteproject', [projectsController::class, 'deleteProject']);
 Route::post('user/getprojects', [projectsController::class, 'getProjects']);
+Route::post('user/getprojectsforadmin', [projectsController::class, 'getProjectsForAdmin']);
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

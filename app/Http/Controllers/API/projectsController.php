@@ -58,11 +58,11 @@ class projectsController extends Controller
 
             if($request->image !== null){
                 $uploadFiles = $request->image->store('public/uploads');
-                $blog->update(["image" => "storage/app/public/uploads/".$request->image->hashName()]);
+                $project->update(["image" => "storage/app/public/uploads/".$request->image->hashName()]);
             }
             if($request->logo !== null){
                 $uploadLogo = $request->logo->store('public/uploads');
-                $blog->update(["logo" => "storage/app/public/uploads/".$request->logo->hashName()]);
+                $project->update(["logo" => "storage/app/public/uploads/".$request->logo->hashName()]);
             }
             return response()->json([
                 'status'=>'SUCCESS',
@@ -92,6 +92,15 @@ class projectsController extends Controller
         ]);
     }
 
+
+    public function getProjectsForAdmin(Request $request)
+    {
+        $project = projects::all();
+        return response()->json([
+            'status'=>200,
+            'response'=>$project
+    ]);
+    }
 
     public function getProjects(Request $request)
     {
