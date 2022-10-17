@@ -6,6 +6,11 @@ use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\AttendanceController;
 use App\Http\Controllers\API\ChangeRequest;
 
+use App\Http\Controllers\API\testimonialController;
+use App\Http\Controllers\API\blogController;
+use App\Http\Controllers\API\contactUsController;
+use App\Http\Controllers\API\projectsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +22,7 @@ use App\Http\Controllers\API\ChangeRequest;
 |
 */
 
+// Linkit_Soft User Admin Portal API'S
 Route::post('user/register', [UserController::class, 'Register']);
 Route::post('user/signin', [UserController::class, 'signIn']);
 Route::post('user/updateuser', [UserController::class, 'updateUser']);
@@ -31,6 +37,25 @@ Route::post('user/getchangerequser', [ChangeRequest::class, 'getChangeReqUser'])
 Route::post('user/updatedeviceid', [ChangeRequest::class, 'updateDeviceId']);
 Route::post('user/deldeviceiduser', [ChangeRequest::class, 'deleteReqDeviceUser']);
 Route::post('user/getattendanceusers', [AttendanceController::class, 'getAttendanceUsers']);
+
+// Linkit_Soft Website Admin Portal API'S
+Route::post('user/addreview', [testimonialController::class, 'createReview']);
+Route::post('user/updatereview', [testimonialController::class, 'updateReview']);
+Route::post('user/deletereview', [testimonialController::class, 'deleteReview']);
+Route::post('user/getallreviews', [testimonialController::class, 'getAllReviews']);
+Route::post('user/addblog', [blogController::class, 'addBlog']);
+Route::post('user/getblogbycategory', [blogController::class, 'getBlogByCategory']);
+Route::post('user/updateblog', [blogController::class, 'updateBlog']);
+Route::post('user/updateblogstatus', [blogController::class, 'updateBlogStatus']);
+Route::post('user/deleteblog', [blogController::class, 'deleteBlog']);
+Route::post('user/addchildblog', [blogController::class, 'addChildBlog']);
+Route::post('user/getchildblog', [blogController::class, 'getChildBlog']);
+Route::post('user/addcontact', [contactUsController::class, 'addContact']);
+Route::post('user/getcontact', [contactUsController::class, 'getContacts']);
+Route::post('user/addproject', [projectsController::class, 'addProject']);
+Route::post('user/updateproject', [projectsController::class, 'updateProject']);
+Route::post('user/deleteproject', [projectsController::class, 'deleteProject']);
+Route::post('user/getprojects', [projectsController::class, 'getProjects']);
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -36,6 +36,7 @@ class UserController extends Controller
         }
         
        $user = User::where('email', $input['email'])->get();
+
         if($user->isEmpty()){
             $uploadFiles = $request->image->store('public/uploads');
             $user =  User::create([
@@ -45,6 +46,7 @@ class UserController extends Controller
                 "password" => Hash::make($input['password']),
                 "deviceId" => $input['deviceId'],
                 "phone" => $input['phone'],
+                
             ]);
     
             return response()->json([
@@ -92,7 +94,6 @@ class UserController extends Controller
             return response()->json([
                 'status'=>"FAILURE",
                 "response"=>"Your deviceId is change please request to the admin",
-                "message"=>$user->id,
             ]);
         }
         else{
